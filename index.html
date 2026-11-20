@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Hannah Richards | Blonde &amp; Lived-In Color Hairstylist, San Clemente</title>
+<title>Hair by Hannah | Blonde &amp; Lived-In Color Hairstylist, San Clemente</title>
 <link rel="canonical" href="https://camrichards-kap.github.io/hair-by-hannah/">
 <meta name="description" content="Hannah Richards is a hairstylist at Salon Zinnia in San Clemente, CA. Custom blondes, lived-in color and haircuts at Salon Zinnia. New clients welcome. Text to book.">
 <meta name="theme-color" content="#F6F1EA">
@@ -155,10 +155,9 @@ p { margin: 0; text-wrap: pretty; }
 }
 .top.scrolled { border-bottom-color: var(--line); }
 .top .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; gap: var(--s4); }
-.brand { display: inline-flex; align-items: baseline; gap: var(--s3); text-decoration: none; white-space: nowrap; padding: var(--s2) 0; }
+.brand { display: inline-flex; align-items: baseline; gap: var(--s2); text-decoration: none; white-space: nowrap; padding: var(--s2) 0; }
+.brand .by { font: italic 500 22px/1 var(--serif); color: var(--taupe); }
 .brand .script { font: 400 40px/.8 var(--script); color: var(--cocoa); transform: translateY(4px); }
-.brand .sub { font: 500 11px/1 var(--sans); letter-spacing: .24em; text-transform: uppercase; color: var(--taupe); }
-@media (max-width: 420px) { .brand .sub { display: none; } }
 .nav { display: flex; align-items: center; gap: var(--s5); }
 .nav a:not(.btn) { font-size: 15px; text-decoration: none; color: var(--taupe); padding: var(--s2) 0; transition: color .2s var(--ease); }
 .nav a:not(.btn):hover { color: var(--cocoa); }
@@ -299,8 +298,9 @@ section { scroll-margin-top: 80px; }
 .ba figcaption { margin-top: var(--s4); color: var(--taupe); font-size: 16px; }
 
 /* Booking */
-.book .wrap { display: grid; grid-template-columns: .85fr 1.15fr; gap: var(--s8); align-items: start; }
-.facts { list-style: none; padding: 0; margin: var(--s6) 0 0; display: grid; gap: 0; }
+.book-head { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s8); align-items: end; margin-bottom: var(--s7); }
+@media (max-width: 860px) { .book-head { grid-template-columns: 1fr; gap: var(--s5); } }
+.facts { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; }
 .facts li { display: grid; grid-template-columns: 96px 1fr; gap: var(--s4); padding: var(--s4) 0; border-top: 1px solid var(--line); }
 .facts li:last-child { border-bottom: 1px solid var(--line); }
 .facts span { font: 500 12px/1.9 var(--sans); letter-spacing: .18em; text-transform: uppercase; color: var(--taupe); }
@@ -309,25 +309,178 @@ section { scroll-margin-top: 80px; }
   font-size: 14px; padding: 2px var(--s3); border-radius: 999px; border: 1px solid var(--line); color: var(--taupe);
 }
 .day.on { background: var(--cocoa); color: var(--cream); border-color: var(--cocoa); }
-.day.soon { border-style: dashed; }
 
 .booker {
-  background: var(--linen); border-radius: 18px; padding: var(--s2); box-shadow: var(--shadow);
+  background: var(--linen); border-radius: 20px; padding: var(--s2); box-shadow: var(--shadow);
   display: flex;
 }
 .booker iframe { width: 100%; min-height: 680px; border: 0; border-radius: 12px; background: #fff; }
-.booker-fallback {
-  flex: 1; border-radius: 12px; border: 1px dashed var(--line);
-  display: grid; place-content: center; text-align: center; gap: var(--s4); padding: var(--s7) var(--s5);
-}
-.booker-fallback h3 { font-size: 36px; }
-.booker-fallback p { color: var(--taupe); max-width: 36ch; margin-inline: auto; }
-.booker-fallback .actions { display: flex; gap: var(--s3); justify-content: center; flex-wrap: wrap; margin-top: var(--s2); }
 .booker-alt { margin-top: var(--s4); font-size: 15px; color: var(--taupe); }
-@media (max-width: 860px) {
-  .book .wrap { grid-template-columns: 1fr; gap: var(--s7); }
+
+/* ── Booking calendar ── */
+.cal { flex: 1; min-width: 0; background: var(--cream); border-radius: 14px; padding: var(--s5); }
+.cal-bar { display: flex; justify-content: space-between; align-items: center; gap: var(--s3); flex-wrap: wrap; margin-bottom: var(--s5); }
+.seg { display: inline-flex; padding: 4px; border-radius: 999px; background: var(--linen); }
+.seg button {
+  font: 500 14px/1 var(--sans); color: var(--taupe); background: none; border: 0; cursor: pointer;
+  min-height: 40px; padding: 0 var(--s4); border-radius: 999px;
+  transition: background-color .25s var(--ease), color .25s var(--ease), transform .15s var(--ease);
 }
-.soon-note { display: block; margin-top: var(--s2); font-size: 14px; color: var(--taupe); }
+.seg button[aria-selected="true"] { background: var(--cocoa); color: var(--cream); }
+.seg button:active { transform: scale(.97); }
+.demo-pill { font: italic 500 16px/1 var(--serif); color: var(--taupe); }
+.view[hidden] { display: none; }
+
+.flow { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s6); }
+.flow .col { display: grid; gap: var(--s6); align-content: start; min-width: 0; }
+@media (max-width: 860px) { .flow { grid-template-columns: 1fr; } }
+.step { border: 0; padding: 0; margin: 0; min-width: 0; }
+.step legend, .step .legend {
+  display: flex; align-items: center; gap: var(--s2); padding: 0; margin-bottom: var(--s3);
+  font: 500 12px/1 var(--sans); letter-spacing: .18em; text-transform: uppercase; color: var(--taupe);
+}
+.step legend b, .step .legend b {
+  width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; letter-spacing: 0;
+  background: var(--blush); color: var(--cocoa); font-size: 12px;
+}
+.step-head { display: flex; justify-content: space-between; align-items: center; gap: var(--s3); margin-bottom: var(--s3); }
+.step-head .legend { margin: 0; }
+
+.svc-list { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s2); }
+@media (max-width: 420px) {
+  .svc label { flex-direction: column; align-items: flex-start; gap: 2px; padding: var(--s2) var(--s3); }
+  .svc .n { font-size: 14px; }
+}
+@media (max-width: 330px) { .svc-list { grid-template-columns: 1fr; } }
+.svc { position: relative; }
+.svc input { position: absolute; opacity: 0; pointer-events: none; }
+.svc label {
+  display: flex; justify-content: space-between; align-items: baseline; gap: var(--s2); cursor: pointer;
+  min-height: 48px; padding: var(--s3) var(--s4); border-radius: 12px; border: 1px solid var(--line);
+  background: var(--cream); transition: border-color .2s var(--ease), background-color .2s var(--ease), transform .15s var(--ease);
+}
+.svc label:hover { border-color: var(--taupe); }
+.svc label:active { transform: scale(.98); }
+.svc .n { font-size: 15px; font-weight: 500; }
+.svc .d { font-size: 13px; color: var(--taupe); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.svc input:checked + label { border-color: var(--cocoa); background: var(--linen); box-shadow: inset 0 0 0 1px var(--cocoa); }
+.svc input:focus-visible + label { outline: 2px solid var(--clay); outline-offset: 2px; }
+
+.month-nav { display: flex; align-items: center; gap: var(--s1); }
+.month-label { font: italic 500 18px/1 var(--serif); margin-right: var(--s2); }
+.icon-btn {
+  width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line); background: var(--cream); color: var(--cocoa);
+  font: 400 20px/1 var(--sans); cursor: pointer; display: grid; place-items: center;
+  transition: background-color .2s var(--ease), transform .15s var(--ease), opacity .2s;
+}
+.icon-btn:hover:not(:disabled) { background: var(--linen); }
+.icon-btn:active:not(:disabled) { transform: scale(.94); }
+.icon-btn:disabled { opacity: .35; cursor: default; }
+
+.day-strip { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+.dbtn {
+  display: grid; justify-items: center; gap: 2px; padding: var(--s2) 0; min-height: 64px; cursor: pointer;
+  border-radius: 12px; border: 1px solid var(--line); background: var(--cream); color: var(--cocoa);
+  font-family: var(--sans); font-variant-numeric: tabular-nums;
+  transition: border-color .2s var(--ease), background-color .2s var(--ease), transform .15s var(--ease);
+}
+.dbtn .w { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--taupe); }
+.dbtn .n { font: 500 22px/1.1 var(--serif); }
+.dbtn .o { font-size: 11px; color: var(--clay); min-height: 1.2em; }
+.dbtn:hover:not(:disabled) { border-color: var(--taupe); }
+.dbtn:active:not(:disabled) { transform: scale(.96); }
+.dbtn[aria-pressed="true"] { background: var(--cocoa); border-color: var(--cocoa); color: var(--cream); }
+.dbtn[aria-pressed="true"] .w, .dbtn[aria-pressed="true"] .o { color: var(--blush); }
+.dbtn:disabled { cursor: default; background: transparent; border-style: dashed; color: var(--taupe); }
+.dbtn:disabled .n { opacity: .5; }
+
+.slot-group + .slot-group { margin-top: var(--s4); }
+.slot-group h4 { margin: 0 0 var(--s2); font: italic 500 17px/1 var(--serif); color: var(--taupe); }
+.slots { display: grid; grid-template-columns: repeat(auto-fill, minmax(88px, 1fr)); gap: var(--s2); }
+.tbtn {
+  min-height: 44px; border-radius: 999px; border: 1px solid var(--line); background: var(--cream); color: var(--cocoa);
+  font: 500 14px/1 var(--sans); font-variant-numeric: tabular-nums; cursor: pointer;
+  transition: border-color .2s var(--ease), background-color .2s var(--ease), transform .15s var(--ease);
+}
+.tbtn:hover { border-color: var(--taupe); }
+.tbtn:active { transform: scale(.96); }
+.tbtn[aria-pressed="true"] { background: var(--cocoa); border-color: var(--cocoa); color: var(--cream); }
+.empty { padding: var(--s5); border-radius: 12px; border: 1px dashed var(--line); color: var(--taupe); text-align: center; }
+.empty strong { display: block; font: 500 22px/1.2 var(--serif); color: var(--cocoa); margin-bottom: var(--s1); }
+.skel { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s2); }
+.skel i { height: 44px; border-radius: 999px; background: linear-gradient(90deg, var(--linen), color-mix(in srgb, var(--linen) 40%, var(--cream)), var(--linen)); background-size: 200% 100%; animation: sk 1.2s linear infinite; }
+@keyframes sk { to { background-position: -200% 0; } }
+
+.details { display: grid; gap: var(--s3); }
+.details[hidden] { display: none; }
+.summary { padding: var(--s3) var(--s4); border-radius: 12px; background: var(--linen); font-size: 15px; }
+.summary strong { font-weight: 500; }
+.details label { display: grid; gap: var(--s1); font-size: 14px; color: var(--taupe); }
+.details .opt { color: var(--taupe); opacity: .8; }
+.details input, .details textarea {
+  font: 400 16px/1.4 var(--sans); color: var(--cocoa); background: var(--cream);
+  border: 1px solid var(--line); border-radius: 10px; padding: var(--s3) var(--s4); min-height: 48px; width: 100%;
+  transition: border-color .2s var(--ease);
+}
+.details textarea { resize: vertical; min-height: 64px; }
+.details input:focus, .details textarea:focus { outline: none; border-color: var(--cocoa); box-shadow: 0 0 0 3px color-mix(in srgb, var(--clay) 25%, transparent); }
+.details input[aria-invalid="true"] { border-color: #B4472F; }
+.err { color: #B4472F; font-size: 14px; min-height: 0; }
+.err:empty { display: none; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .err, :root:not([data-theme="light"]) .details input[aria-invalid="true"] { color: #F0A08B; border-color: #F0A08B; } }
+.fine { font-size: 13px; color: var(--taupe); }
+
+.done { text-align: center; display: grid; justify-items: center; gap: var(--s3); padding: var(--s7) var(--s4); }
+.done[hidden] { display: none; }
+.done:focus { outline: none; }
+.done-mark { width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; background: var(--blush); color: var(--cocoa); font-size: 24px; }
+.done h3 { font-size: 34px; }
+.done p { color: var(--taupe); max-width: 44ch; }
+.done .actions { display: flex; gap: var(--s3); flex-wrap: wrap; justify-content: center; margin-top: var(--s2); }
+
+/* Stylist week view */
+.wk-bar { display: flex; justify-content: space-between; align-items: center; gap: var(--s3); flex-wrap: wrap; margin-bottom: var(--s4); }
+.wk-nav { display: flex; align-items: center; gap: var(--s2); }
+.wk-label { font: 500 22px/1 var(--serif); min-width: 12ch; text-align: center; font-variant-numeric: tabular-nums; }
+.legend-list { list-style: none; margin: 0; padding: 0; display: flex; gap: var(--s4); font-size: 13px; color: var(--taupe); }
+.legend-list li { display: flex; align-items: center; gap: 6px; }
+.sw { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+.sw.appt, .ev.appt { background: var(--cocoa); }
+.sw.personal, .ev.personal { background: repeating-linear-gradient(135deg, var(--linen) 0 6px, color-mix(in srgb, var(--taupe) 22%, var(--linen)) 6px 8px); border: 1px solid var(--line); }
+.sw.req, .ev.req { background: var(--blush); }
+
+.wk-tabs { display: none; }
+.wk { --ppm: 1.05px; display: grid; grid-template-columns: 48px repeat(6, minmax(0, 1fr)); border-top: 1px solid var(--line); }
+.wk-head { position: sticky; top: 68px; z-index: 2; background: var(--cream); text-align: center; padding: var(--s2) 0; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+.wk-head .w { display: block; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--taupe); }
+.wk-head .n { font: 500 20px/1.1 var(--serif); }
+.wk-head.today .n { color: var(--clay); }
+.wk-axis { position: relative; height: calc(var(--mins) * var(--ppm)); }
+.wk-axis span { position: absolute; right: var(--s2); transform: translateY(-50%); font-size: 11px; color: var(--taupe); font-variant-numeric: tabular-nums; }
+.wk-axis span:first-child { transform: translateY(2px); }
+.wk-axis span:last-child { transform: translateY(-100%); }
+.wk-col { position: relative; height: calc(var(--mins) * var(--ppm)); border-left: 1px solid var(--line);
+  background-image: repeating-linear-gradient(to bottom, var(--line) 0 1px, transparent 1px calc(60 * var(--ppm))); }
+.wk-col.past { background-color: color-mix(in srgb, var(--linen) 45%, transparent); }
+.ev {
+  position: absolute; left: 3px; right: 3px; border-radius: 8px; padding: 4px 6px; overflow: hidden;
+  font-size: 12px; line-height: 1.3; color: var(--cocoa);
+}
+.ev.appt { color: var(--cream); }
+.ev b { display: block; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ev span { display: block; opacity: .85; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ev.short span { display: none; }
+.wk-note { margin-top: var(--s4); }
+@media (max-width: 760px) {
+  .cal { padding: var(--s4); }
+  .wk-tabs { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; margin-bottom: var(--s3); }
+  .wk-tabs .dbtn { min-height: 52px; }
+  .wk { grid-template-columns: 48px minmax(0, 1fr); }
+  .wk .wk-head { display: none; }
+  .wk .wk-col:not(.on) { display: none; }
+  .ev { font-size: 13px; }
+  .legend-list { gap: var(--s3); }
+}
 @media (max-width: 420px) {
   .days { gap: 4px; flex-wrap: nowrap; }
   .day { padding: 2px 7px; font-size: 13px; }
@@ -406,7 +559,7 @@ details p { padding: 0 0 var(--s5); color: var(--taupe); max-width: 60ch; }
 
 <header class="top" id="top">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="Hair by Hannah, back to top"><span class="script">Hannah</span><span class="sub">Hair · San Clemente</span></a>
+    <a class="brand" href="#top" aria-label="Hair by Hannah, back to top"><span class="by">Hair by</span><span class="script">Hannah</span></a>
     <nav class="nav" aria-label="Main">
       <a href="#about">About</a>
       <a href="#services">Services</a>
@@ -425,7 +578,7 @@ details p { padding: 0 0 var(--s5); color: var(--taupe); max-width: 60ch; }
       <div>
         <span class="tag reveal">New clients welcome</span>
         <h1 id="hero-title" class="reveal" style="--d:.08s">Custom blondes &amp; <em>lived-in</em> color</h1>
-        <p class="lede reveal" style="--d:.16s">Hannah Richards, hairstylist at Salon Zinnia in San Clemente. Tuesdays, Thursdays &amp; Fridays.</p>
+        <p class="lede reveal" style="--d:.16s">Hannah Richards, hairstylist at Salon Zinnia in San Clemente. Monday through Saturday.</p>
         <div class="actions reveal" style="--d:.24s">
           <a class="btn btn-solid" href="#book" data-book>Book an appointment</a>
           <a class="link" href="#work">See her work</a>
@@ -523,36 +676,105 @@ details p { padding: 0 0 var(--s5); color: var(--taupe); max-width: 60ch; }
   <!-- BOOKING -->
   <section class="sec book" id="book" aria-labelledby="book-title">
     <div class="wrap">
-      <div>
-        <p class="eyebrow">Book</p>
+      <div class="book-head">
         <div class="sec-head" style="margin-bottom:0">
+          <p class="eyebrow">Book</p>
           <h2 id="book-title">Find a time that works</h2>
-          <p id="book-copy">Text Hannah the service you want and a couple of days that work. She’ll confirm by text.</p>
+          <p id="book-copy">Pick a service, a day and an open time. Your request goes to Hannah by text, and she’ll confirm.</p>
         </div>
         <ul class="facts">
           <li><span>Days</span>
-            <div class="days" aria-label="Tuesday, Thursday and Friday; Saturdays coming soon">
-              <b class="day">M</b><b class="day on">Tu</b><b class="day">W</b><b class="day on">Th</b><b class="day on">F</b><b class="day soon" title="Coming soon">Sa</b><b class="day">Su</b>
+            <div class="days" aria-label="Monday through Saturday, closed Sunday">
+              <b class="day on">M</b><b class="day on">Tu</b><b class="day on">W</b><b class="day on">Th</b><b class="day on">F</b><b class="day on">Sa</b><b class="day">Su</b>
             </div>
-            <span class="soon-note">Saturdays coming soon</span>
           </li>
           <li><span>Where</span><div>Salon Zinnia, 641 Camino de los Mares, San Clemente</div></li>
           <li><span>Questions</span><div><a class="link" href="sms:+19493066976">Text (949) 306-6976</a></div></li>
         </ul>
       </div>
-      <div>
-        <div class="booker" id="booker">
-          <div class="booker-fallback" id="booker-fallback">
-            <h3>Text to book</h3>
-            <p>Online booking is coming soon. For now, send Hannah a text with the service you want and a couple of days that work.</p>
-            <div class="actions">
-              <a class="btn btn-solid" href="sms:+19493066976">Text Hannah</a>
-              <a class="btn btn-ghost" href="https://ig.me/m/hairbyhannahrichards" target="_blank" rel="noopener">DM on Instagram</a>
+
+      <div class="booker" id="booker">
+        <!-- Demo booking calendar. Replaced by the Google embed when BOOKING_URL is set. -->
+        <div class="cal" id="cal">
+          <div class="cal-bar">
+            <div class="seg" role="tablist" aria-label="Calendar view">
+              <button role="tab" id="tab-client" aria-selected="true" aria-controls="view-client">Book a visit</button>
+              <button role="tab" id="tab-stylist" aria-selected="false" aria-controls="view-stylist" tabindex="-1">Hannah’s calendar</button>
+            </div>
+            <span class="demo-pill" title="Times and appointments are examples for this preview">Demo · sample schedule</span>
+          </div>
+
+          <!-- CLIENT VIEW -->
+          <div class="view" id="view-client" role="tabpanel" aria-labelledby="tab-client">
+            <div class="flow" id="flow">
+              <div class="col">
+                <fieldset class="step">
+                  <legend><b>1</b> Service</legend>
+                  <div class="svc-list" id="svc-list"></div>
+                </fieldset>
+                <div class="step">
+                  <div class="step-head">
+                    <p class="legend" id="day-label"><b>2</b> Day</p>
+                    <div class="month-nav">
+                      <span id="month-label" class="month-label"></span>
+                      <button class="icon-btn" id="days-prev" aria-label="Earlier days">‹</button>
+                      <button class="icon-btn" id="days-next" aria-label="Later days">›</button>
+                    </div>
+                  </div>
+                  <div class="day-strip" id="day-strip" role="group" aria-labelledby="day-label"></div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="step">
+                  <p class="legend" id="time-label"><b>3</b> Time</p>
+                  <div id="times" role="group" aria-labelledby="time-label" aria-live="polite"></div>
+                </div>
+                <form class="step details" id="details" novalidate hidden>
+                  <p class="legend"><b>4</b> Your details</p>
+                  <div class="summary" id="summary"></div>
+                  <label>Name <input id="f-name" name="name" autocomplete="name" required></label>
+                  <label>Phone <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required></label>
+                  <label>Anything Hannah should know? <span class="opt">(optional)</span>
+                    <textarea id="f-note" name="note" rows="2" placeholder="First time coloring, going lighter, etc."></textarea>
+                  </label>
+                  <p class="err" id="f-err" role="alert"></p>
+                  <button class="btn btn-solid" type="submit">Request this time</button>
+                  <p class="fine">Tapping this opens a text to Hannah with your request. Nothing is saved on this site.</p>
+                </form>
+              </div>
+            </div>
+            <div class="done" id="done" hidden tabindex="-1">
+              <div class="done-mark" aria-hidden="true">✓</div>
+              <h3>Request sent to your texts</h3>
+              <p id="done-copy"></p>
+              <div class="actions">
+                <button class="btn btn-ghost" id="done-again" type="button">Book another</button>
+                <button class="btn btn-ghost" id="done-view" type="button">See it on Hannah’s calendar</button>
+              </div>
             </div>
           </div>
+
+          <!-- STYLIST VIEW -->
+          <div class="view" id="view-stylist" role="tabpanel" aria-labelledby="tab-stylist" hidden>
+            <div class="wk-bar">
+              <div class="wk-nav">
+                <button class="icon-btn" id="wk-prev" aria-label="Previous week">‹</button>
+                <span id="wk-label" class="wk-label"></span>
+                <button class="icon-btn" id="wk-next" aria-label="Next week">›</button>
+              </div>
+              <ul class="legend-list" aria-label="Legend">
+                <li><i class="sw appt"></i>Client</li>
+                <li><i class="sw personal"></i>Personal</li>
+                <li><i class="sw req"></i>New request</li>
+              </ul>
+            </div>
+            <div class="wk-tabs" id="wk-tabs" role="group" aria-label="Day"></div>
+            <div class="wk" id="wk"></div>
+            <p class="fine wk-note">This is Hannah’s private view. Clients only see open times, never names or personal blocks.</p>
+          </div>
         </div>
-        <p class="booker-alt" id="booker-alt" hidden>Calendar not loading? <a class="link" id="booker-link" href="#" target="_blank" rel="noopener">Open booking in a new tab</a> or text (949) 306-6976.</p>
       </div>
+      <p class="booker-alt" id="booker-alt" hidden>Calendar not loading? <a class="link" id="booker-link" href="#" target="_blank" rel="noopener">Open booking in a new tab</a> or text (949) 306-6976.</p>
     </div>
   </section>
 
@@ -600,7 +822,7 @@ details p { padding: 0 0 var(--s5); color: var(--taupe); max-width: 60ch; }
       </div>
       <div class="foot">
         <span class="muted">© <span id="yr">2026</span> Hair by Hannah Richards</span>
-        <span class="muted">Tuesday · Thursday · Friday</span>
+        <span class="muted">Monday – Saturday</span>
       </div>
     </div>
   </section>
@@ -627,13 +849,6 @@ const PHOTO_TEXT = "Hi Hannah! Here's a photo of my hair now and one I love. Wha
 document.querySelectorAll('a[href^="sms:"]').forEach((a) => {
   a.href = msg(a.dataset.sms === "photo" ? PHOTO_TEXT : BOOK_TEXT);
 });
-/* Until online booking is set up, the Book buttons open a text to Hannah directly. */
-if (!BOOKING_URL) {
-  document.querySelectorAll("[data-book]").forEach((a) => {
-    a.href = msg(BOOK_TEXT);
-    a.textContent = a.hasAttribute("data-short") ? "Text to book" : "Text Hannah to book";
-  });
-}
 
 (function () {
   if (!BOOKING_URL) return;
@@ -649,6 +864,240 @@ if (!BOOKING_URL) {
   document.getElementById("booker-link").href = BOOKING_URL.replace(/\?gv=true$/, "");
   alt.hidden = false;
 })();
+
+/* ──────────────────────────────────────────────────────────────
+   DEMO BOOKING CALENDAR
+   Sample availability so Hannah can see how online booking would feel.
+   Durations, hours and every appointment below are made-up examples.
+   ────────────────────────────────────────────────────────────── */
+const SERVICES = [
+  { id: "blond", name: "Custom blonding", mins: 180 },
+  { id: "lived", name: "Lived-in color",  mins: 150 },
+  { id: "gloss", name: "Gloss & toner",   mins: 60 },
+  { id: "root",  name: "Root touch-up",   mins: 90 },
+  { id: "cut",   name: "Haircut",         mins: 60 },
+  { id: "men",   name: "Men’s cut",       mins: 30 },
+  { id: "kids",  name: "Kids’ cut",       mins: 30 },
+  { id: "blow",  name: "Blowout",         mins: 45 },
+];
+const OPEN = 9 * 60, CLOSE = 18 * 60, STEP = 30;          // 9:00 AM – 6:00 PM, every 30 min
+const CLIENTS = ["Kayla M.", "Jess T.", "Brooke L.", "Megan S.", "Ava R.", "Marco D.", "Sarah P.", "Tessa W.", "Chloe B.", "Danielle K.", "Ryan F.", "Olivia G.", "Emma H.", "Natalie C.", "Lily (age 7)"];
+const PERSONAL = {                                        // [start, end, label] in minutes from midnight
+  1: [[540, 600, "Pilates"], [750, 780, "Lunch"]],
+  2: [[750, 780, "Lunch"], [1020, 1080, "Errands"]],
+  3: [[720, 780, "Lunch"]],
+  4: [[750, 780, "Lunch"], [540, 570, "Coffee run"]],
+  5: [[750, 780, "Lunch"], [990, 1080, "Off early"]],
+  6: [[960, 1080, "Family dinner"]],
+};
+
+function initCalendar() {
+  const $ = (id) => document.getElementById(id);
+  const DAY = 86400000;
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  const key = (d) => d.getFullYear() * 10000 + (d.getMonth() + 1) * 100 + d.getDate();
+  const addDays = (d, n) => { const x = new Date(d); x.setDate(x.getDate() + n); return x; };
+  const fmtT = (m) => { const h = Math.floor(m / 60), mm = m % 60, ap = h >= 12 ? "PM" : "AM"; return `${((h + 11) % 12) + 1}:${String(mm).padStart(2, "0")} ${ap}`; };
+  const fmtD = (d, o = { weekday: "short", month: "short", day: "numeric" }) => d.toLocaleDateString("en-US", o);
+  const svcById = (id) => SERVICES.find((s) => s.id === id);
+
+  /* requests made in this browser (demo only) */
+  let requests = [];
+  try { requests = JSON.parse(localStorage.getItem("hbh-demo-requests") || "[]"); } catch (e) {}
+  const saveReq = () => { try { localStorage.setItem("hbh-demo-requests", JSON.stringify(requests)); } catch (e) {} };
+
+  /* deterministic fake schedule per date */
+  const cache = new Map();
+  function schedule(d) {
+    const k = key(d);
+    if (!cache.has(k)) {
+      const dow = d.getDay(), ev = [];
+      if (dow !== 0) {
+        (PERSONAL[dow] || []).forEach(([s, e, label]) => ev.push({ type: "personal", s, e, label }));
+        if (dow === 3 && Math.floor(k / 7) % 2) ev.push({ type: "personal", s: 900, e: 960, label: "Dentist" });
+        let seed = k % 2147483647;
+        const rnd = () => (seed = (seed * 48271) % 2147483647) / 2147483647;
+        const want = 1 + Math.floor(rnd() * 3);
+        for (let i = 0, tries = 0; i < want && tries < 40; tries++) {
+          const svc = SERVICES[Math.floor(rnd() * SERVICES.length)];
+          const s = OPEN + Math.floor(rnd() * ((CLOSE - svc.mins - OPEN) / STEP + 1)) * STEP;
+          const e = s + svc.mins;
+          if (ev.some((x) => s < x.e && e > x.s)) continue;
+          ev.push({ type: "appt", s, e, label: CLIENTS[Math.floor(rnd() * CLIENTS.length)], svc: svc.name });
+          i++;
+        }
+      }
+      cache.set(k, ev);
+    }
+    const reqs = requests.filter((r) => r.k === k).map((r) => ({ type: "req", s: r.s, e: r.e, label: r.name, svc: r.svc }));
+    return cache.get(k).concat(reqs).sort((a, b) => a.s - b.s);
+  }
+  function openSlots(d, mins) {
+    if (d.getDay() === 0) return [];
+    const ev = schedule(d), out = [];
+    const now = new Date(), isToday = key(d) === key(now);
+    const earliest = isToday ? now.getHours() * 60 + now.getMinutes() + 120 : 0;
+    for (let s = OPEN; s + mins <= CLOSE; s += STEP) {
+      if (s < earliest) continue;
+      if (!ev.some((x) => s < x.e && s + mins > x.s)) out.push(s);
+    }
+    return out;
+  }
+
+  /* ── client flow ── */
+  const st = { svc: null, page: 0, day: null, time: null };
+  const MAX_PAGES = 5;
+
+  $("svc-list").innerHTML = SERVICES.map((s) => `
+    <div class="svc"><input type="radio" name="svc" id="svc-${s.id}" value="${s.id}">
+      <label for="svc-${s.id}"><span class="n">${s.name}</span><span class="d">${s.mins >= 60 ? (s.mins / 60) + " hr" : s.mins + " min"}</span></label></div>`).join("");
+  $("svc-list").addEventListener("change", (e) => {
+    st.svc = svcById(e.target.value); st.time = null;
+    if (st.day && !openSlots(st.day, st.svc.mins).length) st.day = null;
+    if (!st.day) st.day = firstOpenDay();
+    renderDays(); renderTimes();
+  });
+
+  function firstOpenDay() {
+    for (let i = 0; i < MAX_PAGES * 7; i++) {
+      const d = addDays(today, i);
+      if (openSlots(d, st.svc ? st.svc.mins : 60).length) { st.page = Math.floor(i / 7); return d; }
+    }
+    return null;
+  }
+  function renderDays() {
+    const start = addDays(today, st.page * 7), mins = st.svc ? st.svc.mins : 60;
+    $("month-label").textContent = fmtD(start, { month: "long" });
+    $("days-prev").disabled = st.page === 0;
+    $("days-next").disabled = st.page >= MAX_PAGES - 1;
+    $("day-strip").innerHTML = Array.from({ length: 7 }, (_, i) => {
+      const d = addDays(start, i), closed = d.getDay() === 0, n = closed ? 0 : openSlots(d, mins).length;
+      const sel = st.day && key(st.day) === key(d);
+      const note = closed ? "Closed" : !st.svc ? "" : n ? `${n} open` : "Full";
+      return `<button type="button" class="dbtn" data-k="${key(d)}" data-i="${i}" ${closed || (st.svc && !n) ? "disabled" : ""} aria-pressed="${sel}"
+        aria-label="${fmtD(d, { weekday: "long", month: "long", day: "numeric" })}${note ? ", " + note : ""}">
+        <span class="w">${fmtD(d, { weekday: "short" })}</span><span class="n">${d.getDate()}</span><span class="o">${note}</span></button>`;
+    }).join("");
+  }
+  $("day-strip").addEventListener("click", (e) => {
+    const b = e.target.closest(".dbtn"); if (!b || b.disabled) return;
+    st.day = addDays(today, st.page * 7 + Number(b.dataset.i)); st.time = null;
+    renderDays(); renderTimes();
+  });
+  $("days-prev").addEventListener("click", () => { st.page = Math.max(0, st.page - 1); renderDays(); });
+  $("days-next").addEventListener("click", () => { st.page = Math.min(MAX_PAGES - 1, st.page + 1); renderDays(); });
+
+  function renderTimes() {
+    const box = $("times");
+    $("details").hidden = !st.time;
+    if (!st.svc) { box.innerHTML = `<div class="empty"><strong>Choose a service</strong>Open times show up here.</div>`; return; }
+    if (!st.day) { box.innerHTML = `<div class="empty"><strong>Pick a day</strong>Days with open times are marked.</div>`; return; }
+    const slots = openSlots(st.day, st.svc.mins);
+    if (!slots.length) { box.innerHTML = `<div class="empty"><strong>Fully booked</strong>Try another day, or text Hannah to get on the waitlist.</div>`; return; }
+    const groups = [["Morning", (s) => s < 720], ["Afternoon", (s) => s >= 720 && s < 1020], ["Evening", (s) => s >= 1020]];
+    box.innerHTML = `<p class="fine" style="margin:0 0 12px">${fmtD(st.day, { weekday: "long", month: "long", day: "numeric" })} · ${st.svc.name}</p>` +
+      groups.map(([label, test]) => {
+        const g = slots.filter(test); if (!g.length) return "";
+        return `<div class="slot-group"><h4>${label}</h4><div class="slots">${g.map((s) =>
+          `<button type="button" class="tbtn" data-s="${s}" aria-pressed="${st.time === s}">${fmtT(s)}</button>`).join("")}</div></div>`;
+      }).join("");
+    if (st.time != null) renderSummary();
+  }
+  $("times").addEventListener("click", (e) => {
+    const b = e.target.closest(".tbtn"); if (!b) return;
+    st.time = Number(b.dataset.s);
+    $("times").querySelectorAll(".tbtn").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+    $("details").hidden = false; renderSummary();
+    if (matchMedia("(max-width: 860px)").matches) $("details").scrollIntoView({ behavior: "smooth", block: "nearest" });
+  });
+  function renderSummary() {
+    $("summary").innerHTML = `<strong>${st.svc.name}</strong> · ${fmtD(st.day, { weekday: "short", month: "short", day: "numeric" })} · ${fmtT(st.time)}–${fmtT(st.time + st.svc.mins)}`;
+  }
+
+  $("details").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = $("f-name").value.trim(), phone = $("f-phone").value.trim(), note = $("f-note").value.trim();
+    const okName = name.length > 1, okPhone = phone.replace(/\D/g, "").length >= 10;
+    $("f-name").setAttribute("aria-invalid", String(!okName));
+    $("f-phone").setAttribute("aria-invalid", String(!okPhone));
+    if (!okName || !okPhone) {
+      $("f-err").textContent = !okName ? "Please add your name." : "Please add a phone number Hannah can text (10 digits).";
+      (!okName ? $("f-name") : $("f-phone")).focus();
+      return;
+    }
+    $("f-err").textContent = "";
+    const when = `${fmtD(st.day, { weekday: "long", month: "long", day: "numeric" })} at ${fmtT(st.time)}`;
+    const body = `Hi Hannah! I'd like to book ${st.svc.name} on ${when}. Name: ${name}. Phone: ${phone}.` + (note ? ` Note: ${note}` : "");
+    requests.push({ k: key(st.day), s: st.time, e: st.time + st.svc.mins, name, svc: st.svc.name, date: st.day.toISOString() });
+    saveReq();
+    lastReq = { day: st.day };
+    $("done-copy").textContent = `Your texting app should open with your request for ${st.svc.name} on ${when}. Send it, and Hannah will confirm by text. If nothing opened, text (949) 306-6976.`;
+    $("flow").hidden = true; $("done").hidden = false; $("done").focus();
+    window.location.href = msg(body);
+  });
+  let lastReq = null;
+  $("done-again").addEventListener("click", () => {
+    st.time = null; $("details").reset(); $("flow").hidden = false; $("done").hidden = true;
+    renderDays(); renderTimes();
+  });
+  $("done-view").addEventListener("click", () => { if (lastReq) { wkStart = monday(lastReq.day); wkDay = lastReq.day; } setTab("stylist"); });
+
+  /* ── stylist week view ── */
+  const monday = (d) => { const x = new Date(d); x.setHours(0, 0, 0, 0); x.setDate(x.getDate() - ((x.getDay() + 6) % 7)); return x; };
+  let wkStart = monday(today), wkDay = today.getDay() === 0 ? addDays(today, 1) : today;
+  function renderWeek() {
+    const days = Array.from({ length: 6 }, (_, i) => addDays(wkStart, i));
+    if (!days.some((d) => key(d) === key(wkDay))) wkDay = days[0];
+    $("wk-label").textContent = `${fmtD(days[0], { month: "short", day: "numeric" })} – ${days[5].getMonth() === days[0].getMonth() ? days[5].getDate() : fmtD(days[5], { month: "short", day: "numeric" })}`;
+    $("wk-prev").disabled = wkStart <= monday(today);
+    const wk = $("wk"); wk.style.setProperty("--mins", CLOSE - OPEN);
+    let html = `<div class="wk-head" aria-hidden="true"></div>` + days.map((d) =>
+      `<div class="wk-head${key(d) === key(today) ? " today" : ""}"><span class="w">${fmtD(d, { weekday: "short" })}</span><span class="n">${d.getDate()}</span></div>`).join("");
+    html += `<div class="wk-axis" aria-hidden="true">${Array.from({ length: (CLOSE - OPEN) / 60 + 1 }, (_, i) =>
+      `<span style="top:calc(${i * 60} * var(--ppm))">${((OPEN / 60 + i + 11) % 12) + 1}${OPEN / 60 + i >= 12 ? "p" : "a"}</span>`).join("")}</div>`;
+    html += days.map((d) => {
+      const evs = schedule(d).map((x) => {
+        const title = x.type === "personal" ? x.label : x.type === "req" ? `Request: ${x.label}` : x.label;
+        const sub = x.type === "personal" ? `${fmtT(x.s)}–${fmtT(x.e)}` : `${x.svc} · ${fmtT(x.s)}`;
+        return `<div class="ev ${x.type}${x.e - x.s <= 30 ? " short" : ""}" style="top:calc(${x.s - OPEN} * var(--ppm) + 1px);height:calc(${x.e - x.s} * var(--ppm) - 2px)"
+          aria-label="${title}, ${x.type === "personal" ? "" : x.svc + ", "}${fmtT(x.s)} to ${fmtT(x.e)}"><b>${title}</b><span>${sub}</span></div>`;
+      }).join("");
+      return `<div class="wk-col${d < today ? " past" : ""}${key(d) === key(wkDay) ? " on" : ""}" aria-label="${fmtD(d, { weekday: "long", month: "long", day: "numeric" })}">${evs}</div>`;
+    }).join("");
+    wk.innerHTML = html;
+    $("wk-tabs").innerHTML = days.map((d) =>
+      `<button type="button" class="dbtn" data-k="${key(d)}" aria-pressed="${key(d) === key(wkDay)}"><span class="w">${fmtD(d, { weekday: "short" })}</span><span class="n">${d.getDate()}</span></button>`).join("");
+  }
+  $("wk-tabs").addEventListener("click", (e) => {
+    const b = e.target.closest(".dbtn"); if (!b) return;
+    const k = Number(b.dataset.k);
+    wkDay = Array.from({ length: 6 }, (_, i) => addDays(wkStart, i)).find((d) => key(d) === k);
+    renderWeek();
+  });
+  $("wk-prev").addEventListener("click", () => { wkStart = addDays(wkStart, -7); renderWeek(); });
+  $("wk-next").addEventListener("click", () => { wkStart = addDays(wkStart, 7); renderWeek(); });
+
+  /* ── tabs ── */
+  const tabs = { client: $("tab-client"), stylist: $("tab-stylist") };
+  function setTab(which, focus) {
+    Object.entries(tabs).forEach(([k, t]) => {
+      const on = k === which;
+      t.setAttribute("aria-selected", String(on)); t.tabIndex = on ? 0 : -1;
+      $("view-" + k).hidden = !on;
+    });
+    if (which === "stylist") renderWeek(); else { renderDays(); renderTimes(); }
+    if (focus) tabs[which].focus();
+  }
+  tabs.client.addEventListener("click", () => setTab("client"));
+  tabs.stylist.addEventListener("click", () => setTab("stylist"));
+  document.querySelector(".seg").addEventListener("keydown", (e) => {
+    if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+    setTab(tabs.client.getAttribute("aria-selected") === "true" ? "stylist" : "client", true);
+  });
+
+  renderDays(); renderTimes();
+}
+if (!BOOKING_URL) initCalendar();
 
 /* ──────────────────────────────────────────────────────────────
    BEFORE / AFTER PHOTOS
