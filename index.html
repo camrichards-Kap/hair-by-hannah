@@ -3,14 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Hair by Hannah</title>
-<meta name="description" content="Hannah Richards is a hairstylist at Salon Zinnia in San Clemente, CA. Custom blondes, lived-in color, cuts and layers. New clients welcome. Book online.">
+<title>Hannah Richards | Blonde &amp; Lived-In Color Hairstylist, San Clemente</title>
+<link rel="canonical" href="https://camrichards-kap.github.io/hair-by-hannah/">
+<meta name="description" content="Hannah Richards is a hairstylist at Salon Zinnia in San Clemente, CA. Custom blondes, lived-in color and haircuts at Salon Zinnia. New clients welcome. Text to book.">
 <meta name="theme-color" content="#F6F1EA">
 <meta property="og:title" content="Hair by Hannah Richards">
 <meta property="og:description" content="Custom blondes and lived-in color at Salon Zinnia, San Clemente. New clients welcome.">
 <meta property="og:image" content="https://camrichards-kap.github.io/hair-by-hannah/images/beachy-blonde.jpg">
 <meta property="og:url" content="https://camrichards-kap.github.io/hair-by-hannah/">
 <meta property="og:type" content="website">
+<meta property="og:image:width" content="1050">
+<meta property="og:image:height" content="1400">
+<meta property="og:image:alt" content="Beachy blonde waves by Hannah Richards at Salon Zinnia">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hair by Hannah · San Clemente Hairstylist">
+<meta name="twitter:description" content="Custom blondes and lived-in color at Salon Zinnia, San Clemente. New clients welcome.">
+<meta name="twitter:image" content="https://camrichards-kap.github.io/hair-by-hannah/images/beachy-blonde.jpg">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%233B2E26'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-style='italic' font-size='30' fill='%23F6F1EA' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E">
 <script>document.documentElement.classList.add("js")</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +30,10 @@
   "@context": "https://schema.org",
   "@type": "HairSalon",
   "name": "Hair by Hannah Richards",
-  "image": "images/beachy-blonde.jpg",
+  "description": "Hairstylist at Salon Zinnia in San Clemente, CA. Custom blondes, lived-in color, cuts and layers.",
+  "url": "https://camrichards-kap.github.io/hair-by-hannah/",
+  "image": "https://camrichards-kap.github.io/hair-by-hannah/images/beachy-blonde.jpg",
+  "areaServed": ["San Clemente", "Dana Point"],
   "telephone": "+1-949-306-6976",
   "address": {
     "@type": "PostalAddress",
@@ -401,7 +412,7 @@ details p { padding: 0 0 var(--s5); color: var(--taupe); max-width: 60ch; }
       <a href="#services">Services</a>
       <a href="#work">Work</a>
       <a href="#visit">Visit</a>
-      <a class="btn btn-solid" href="#book">Book now</a>
+      <a class="btn btn-solid" href="#book" data-book data-short>Book now</a>
     </nav>
   </div>
 </header>
@@ -414,9 +425,9 @@ details p { padding: 0 0 var(--s5); color: var(--taupe); max-width: 60ch; }
       <div>
         <span class="tag reveal">New clients welcome</span>
         <h1 id="hero-title" class="reveal" style="--d:.08s">Custom blondes &amp; <em>lived-in</em> color</h1>
-        <p class="lede reveal" style="--d:.16s">Hannah Richards, hairstylist at Salon Zinnia in San Clemente.</p>
+        <p class="lede reveal" style="--d:.16s">Hannah Richards, hairstylist at Salon Zinnia in San Clemente. Tuesdays, Thursdays &amp; Fridays.</p>
         <div class="actions reveal" style="--d:.24s">
-          <a class="btn btn-solid" href="#book">Book an appointment</a>
+          <a class="btn btn-solid" href="#book" data-book>Book an appointment</a>
           <a class="link" href="#work">See her work</a>
         </div>
       </div>
@@ -471,7 +482,7 @@ details p { padding: 0 0 var(--s5); color: var(--taupe); max-width: 60ch; }
       </div>
       <div class="menu-note">
         <p><strong>Not sure what to book?</strong> Pricing depends on your hair’s length, thickness and goals. Text Hannah a photo of your hair now and one you love, and she’ll tell you what to book.</p>
-        <a class="btn btn-ghost" href="sms:+19493066976">Text a photo</a>
+        <a class="btn btn-ghost" href="sms:+19493066976" data-sms="photo">Text a photo</a>
       </div>
     </div>
   </section>
@@ -555,7 +566,8 @@ details p { padding: 0 0 var(--s5); color: var(--taupe); max-width: 60ch; }
       <div class="faq-list">
         <details><summary>Are you taking new clients?</summary><p>Yes. New clients are always welcome.</p></details>
         <details><summary>Do you do men’s and kids’ cuts?</summary><p>Yes, every service is open to everyone.</p></details>
-        <details><summary>I’m not sure which color service I need.</summary><p>Text a photo of your hair now and a photo of what you’d love. Hannah will tell you what to book and how much time to plan for.</p></details>
+        <details><summary>How much will it cost?</summary><p>It depends on your hair’s length and thickness and what you’re going for. Text a photo of your hair and ask for a ballpark before you book.</p></details>
+        <details><summary>I’m not sure which color service I need.</summary><p>Text a photo of your hair now and a photo of what you’d love, and ask Hannah what to book.</p></details>
         <details><summary>Where is the salon?</summary><p>Salon Zinnia, 641 Camino de los Mares in San Clemente. It’s a full salon with a lifestyle boutique, so feel free to browse while your color processes.</p></details>
         <!-- TODO (Hannah): add a cancellation / late policy here once she decides on one. -->
       </div>
@@ -594,7 +606,7 @@ details p { padding: 0 0 var(--s5); color: var(--taupe); max-width: 60ch; }
   </section>
 </main>
 
-<div class="bookbar" id="bookbar"><a class="btn btn-solid" href="#book">Book an appointment</a></div>
+<div class="bookbar" id="bookbar"><a class="btn btn-solid" href="#book" data-book>Book an appointment</a></div>
 
 <script>
 /* ──────────────────────────────────────────────────────────────
@@ -605,6 +617,23 @@ details p { padding: 0 0 var(--s5); color: var(--taupe); max-width: 60ch; }
    Leave it empty to show the "Text to book" card instead.
    ────────────────────────────────────────────────────────────── */
 const BOOKING_URL = "";
+
+/* Text links open with a starter message so clients aren't staring at a blank text.
+   "?&body=" works on both iPhone and Android. */
+const SMS = "sms:+19493066976?&body=";
+const msg = (t) => SMS + encodeURIComponent(t);
+const BOOK_TEXT = "Hi Hannah! I found you online and I'd love to book. Service: ___ . Days that work for me: ___";
+const PHOTO_TEXT = "Hi Hannah! Here's a photo of my hair now and one I love. What should I book?";
+document.querySelectorAll('a[href^="sms:"]').forEach((a) => {
+  a.href = msg(a.dataset.sms === "photo" ? PHOTO_TEXT : BOOK_TEXT);
+});
+/* Until online booking is set up, the Book buttons open a text to Hannah directly. */
+if (!BOOKING_URL) {
+  document.querySelectorAll("[data-book]").forEach((a) => {
+    a.href = msg(BOOK_TEXT);
+    a.textContent = a.hasAttribute("data-short") ? "Text to book" : "Text Hannah to book";
+  });
+}
 
 (function () {
   if (!BOOKING_URL) return;
