@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hair by Hannah</title>
+<meta name="description" content="Hannah Richards is a hairstylist at Salon Zinnia in San Clemente, CA. Custom blondes, lived-in color, cuts and layers. New clients welcome. Book online.">
+<meta name="theme-color" content="#F6F1EA">
+<meta property="og:title" content="Hair by Hannah Richards">
+<meta property="og:description" content="Custom blondes and lived-in color at Salon Zinnia, San Clemente. New clients welcome.">
+<meta property="og:image" content="images/beachy-blonde.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%233B2E26'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-style='italic' font-size='30' fill='%23F6F1EA' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E">
+<script>document.documentElement.classList.add("js")</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HairSalon",
+  "name": "Hair by Hannah Richards",
+  "image": "images/beachy-blonde.jpg",
+  "telephone": "+1-949-306-6976",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "641 Camino de los Mares",
+    "addressLocality": "San Clemente",
+    "addressRegion": "CA",
+    "postalCode": "92673",
+    "addressCountry": "US"
+  },
+  "sameAs": ["https://www.instagram.com/hairbyhannahrichards/"]
+}
+</script>
+
+<style>
+/* ─────────────────────────────────────────────
+   Design tokens
+   ───────────────────────────────────────────── */
+:root {
+  --cream:  #F6F1EA;   /* page */
+  --linen:  #ECE3D7;   /* soft surface */
+  --cocoa:  #3B2E26;   /* ink */
+  --taupe:  #6E5F53;   /* muted text */
+  --clay:   #8C5A3A;   /* accent (AA on cream) */
+  --blush:  #E8CFC3;   /* tint */
+  --line:   rgba(59, 46, 38, .14);
+
+  --serif: "Cormorant Garamond", Georgia, serif;
+  --sans:  "Jost", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* spacing scale: 4 8 12 16 24 32 48 72 112 */
+  --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px; --s6: 32px; --s7: 48px; --s8: 72px; --s9: 112px;
+
+  --arch: 999px 999px 6px 6px;
+  --shadow: 0 1px 2px rgba(59,46,38,.06), 0 8px 24px rgba(59,46,38,.08), 0 24px 48px rgba(59,46,38,.06);
+  --ease: cubic-bezier(.22, 1, .36, 1);
+  --wrap: 1120px;
+  --gutter: clamp(16px, 5vw, 48px);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --cream: #1E1814; --linen: #29211C; --cocoa: #F1E8DD; --taupe: #BBA999;
+    --clay: #D9A47E; --blush: #4A3830; --line: rgba(241,232,221,.14);
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 32px rgba(0,0,0,.35);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --cream: #1E1814; --linen: #29211C; --cocoa: #F1E8DD; --taupe: #BBA999;
+  --clay: #D9A47E; --blush: #4A3830; --line: rgba(241,232,221,.14);
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 32px rgba(0,0,0,.35);
+  color-scheme: dark;
+}
+
+/* ─────────────────────────────────────────────
+   Base
+   ───────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--cocoa);
+  font: 400 17px/1.65 var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.08; margin: 0; text-wrap: balance; letter-spacing: -.01em; }
+p { margin: 0; text-wrap: pretty; }
+.wrap { width: min(100% - 2 * var(--gutter), var(--wrap)); margin-inline: auto; }
+.eyebrow {
+  font: 500 12px/1 var(--sans); letter-spacing: .22em; text-transform: uppercase; color: var(--clay);
+}
+.skip { position: absolute; left: -9999px; }
+.skip:focus { left: var(--s4); top: var(--s4); z-index: 99; background: var(--cocoa); color: var(--cream); padding: var(--s3) var(--s4); border-radius: 6px; }
+:focus-visible { outline: 2px solid var(--clay); outline-offset: 3px; border-radius: 4px; }
+
+/* buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--s2);
+  min-height: 48px; padding: 0 var(--s5);
+  font: 500 15px/1 var(--sans); letter-spacing: .04em; text-decoration: none;
+  border-radius: 999px; border: 1px solid var(--cocoa);
+  transition: background-color .25s var(--ease), color .25s var(--ease), transform .15s var(--ease);
+}
+.btn:active { transform: scale(.97); }
+.btn-solid { background: var(--cocoa); color: var(--cream); }
+.btn-solid:hover { background: var(--clay); border-color: var(--clay); }
+.btn-ghost { background: transparent; color: var(--cocoa); }
+.btn-ghost:hover { background: var(--linen); }
+.link {
+  display: inline-block; padding-block: 10px;
+  color: var(--clay); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px;
+  transition: text-underline-offset .2s var(--ease);
+}
+.link:hover { text-underline-offset: 6px; }
+
+/* ─────────────────────────────────────────────
+   Header
+   ───────────────────────────────────────────── */
+.top {
+  position: sticky; top: 0; z-index: 20;
+  background: color-mix(in srgb, var(--cream) 88%, transparent);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid transparent;
+  transition: border-color .3s var(--ease);
+}
+.top.scrolled { border-bottom-color: var(--line); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; gap: var(--s4); }
+.brand { font: italic 500 26px/1 var(--serif); text-decoration: none; white-space: nowrap; }
+.nav { display: flex; align-items: center; gap: var(--s5); }
+.nav a:not(.btn) { font-size: 15px; text-decoration: none; color: var(--taupe); padding: var(--s2) 0; transition: color .2s var(--ease); }
+.nav a:not(.btn):hover { color: var(--cocoa); }
+.nav .btn { min-height: 40px; padding: 0 var(--s4); font-size: 14px; }
+@media (max-width: 760px) {
+  .nav a:not(.btn) { display: none; }
+  .nav .btn { transition: opacity .3s var(--ease); }
+  body.bar-on .nav .btn { opacity: 0; pointer-events: none; }
+}
+
+/* ─────────────────────────────────────────────
+   Hero
+   ───────────────────────────────────────────── */
+.hero { padding: var(--s8) 0 var(--s9); }
+.hero .wrap { display: grid; grid-template-columns: 1.05fr .95fr; gap: var(--s8); align-items: center; }
+.hero h1 { font-size: clamp(48px, 7.2vw, 92px); margin: var(--s5) 0 var(--s5); }
+.hero h1 em { font-style: italic; color: var(--clay); }
+.hero .lede { font-size: 19px; color: var(--taupe); max-width: 30ch; }
+.hero .actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s4) var(--s5); margin-top: var(--s6); }
+.tag {
+  display: inline-flex; align-items: center; gap: var(--s2);
+  font: italic 500 20px/1 var(--serif); color: var(--cocoa);
+  background: var(--blush); padding: var(--s2) var(--s4); border-radius: 999px;
+}
+.tag::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--clay); }
+
+.hero-art { position: relative; justify-self: end; width: min(100%, 440px); }
+.hero-art .main {
+  border-radius: var(--arch); overflow: hidden; aspect-ratio: 3 / 4; box-shadow: var(--shadow);
+  background: var(--linen);
+}
+.hero-art .main img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+.hero-art .small {
+  position: absolute; left: -22%; bottom: -10%; width: 44%;
+  border-radius: var(--arch); overflow: hidden; aspect-ratio: 3 / 4;
+  border: 6px solid var(--cream); box-shadow: var(--shadow); background: var(--linen);
+}
+.hero-art .small img { width: 100%; height: 100%; object-fit: cover; }
+
+@media (max-width: 860px) {
+  .hero { padding: var(--s6) 0 var(--s8); }
+  .hero .wrap { grid-template-columns: 1fr; gap: var(--s7); }
+  .hero-art { justify-self: center; width: min(78%, 380px); margin-left: 14%; }
+  .hero-art .small { left: -26%; }
+}
+
+/* ─────────────────────────────────────────────
+   Sections
+   ───────────────────────────────────────────── */
+section { scroll-margin-top: 80px; }
+.sec { padding: var(--s9) 0; }
+.sec-head { display: grid; gap: var(--s4); margin-bottom: var(--s7); max-width: 34rem; }
+.sec-head h2 { font-size: clamp(38px, 5vw, 58px); }
+.sec-head p { color: var(--taupe); }
+@media (max-width: 760px) { .sec { padding: var(--s8) 0; } }
+
+/* About */
+.about { background: var(--linen); }
+.about .wrap { display: grid; grid-template-columns: .8fr 1.2fr; gap: var(--s8); align-items: center; }
+.about-photo { border-radius: var(--arch); overflow: hidden; aspect-ratio: 4 / 5; box-shadow: var(--shadow); max-width: 400px; }
+.about-photo img { width: 100%; height: 100%; object-fit: cover; }
+.about h2 { font-size: clamp(38px, 5vw, 58px); margin: var(--s4) 0 var(--s5); }
+.about .bio { display: grid; gap: var(--s4); max-width: 54ch; }
+.about .bio p:first-child { font: italic 500 25px/1.4 var(--serif); }
+.sig { margin-top: var(--s5); font: italic 500 30px/1 var(--serif); color: var(--clay); }
+@media (max-width: 860px) {
+  .about .wrap { grid-template-columns: 1fr; gap: var(--s7); }
+  .about-photo { max-width: 300px; }
+}
+
+/* Services — a printed-menu list, not cards */
+.menu { display: grid; grid-template-columns: 1fr 1fr; gap: 0 var(--s8); }
+.menu-group h3 {
+  font: 500 12px/1 var(--sans); letter-spacing: .22em; text-transform: uppercase; color: var(--clay);
+  padding-bottom: var(--s4); border-bottom: 1px solid var(--cocoa);
+}
+.menu-group + .menu-group h3 { }
+.item { padding: var(--s5) 0; border-bottom: 1px solid var(--line); }
+.item-name { font: 500 26px/1.2 var(--serif); }
+.item p { color: var(--taupe); font-size: 16px; margin-top: var(--s1); max-width: 46ch; }
+.menu-note {
+  margin-top: var(--s7); padding: var(--s5) var(--s6); border-radius: 14px; background: var(--linen);
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--s4);
+}
+.menu-note p { max-width: 56ch; }
+.menu-note strong { font-weight: 500; }
+@media (max-width: 760px) {
+  .menu { grid-template-columns: 1fr; gap: var(--s7); }
+  .menu-note { padding: var(--s5); }
+}
+
+/* Gallery */
+.gallery { background: var(--linen); }
+.grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s5);
+}
+.grid figure { margin: 0; overflow: hidden; border-radius: var(--arch); background: var(--blush); aspect-ratio: 4 / 5; }
+.grid img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .6s var(--ease);
+}
+.grid figure:hover img { transform: scale(1.03); }
+.gallery-foot { margin-top: var(--s6); display: flex; justify-content: space-between; align-items: center; gap: var(--s4); flex-wrap: wrap; }
+.gallery-foot p { color: var(--taupe); }
+@media (max-width: 860px) {
+  .grid { grid-template-columns: repeat(2, 1fr); gap: var(--s3); }
+}
+
+/* Booking */
+.book .wrap { display: grid; grid-template-columns: .85fr 1.15fr; gap: var(--s8); align-items: start; }
+.facts { list-style: none; padding: 0; margin: var(--s6) 0 0; display: grid; gap: 0; }
+.facts li { display: grid; grid-template-columns: 96px 1fr; gap: var(--s4); padding: var(--s4) 0; border-top: 1px solid var(--line); }
+.facts li:last-child { border-bottom: 1px solid var(--line); }
+.facts span { font: 500 12px/1.9 var(--sans); letter-spacing: .18em; text-transform: uppercase; color: var(--taupe); }
+.days { display: flex; gap: var(--s2); flex-wrap: wrap; }
+.day {
+  font-size: 14px; padding: 2px var(--s3); border-radius: 999px; border: 1px solid var(--line); color: var(--taupe);
+}
+.day.on { background: var(--cocoa); color: var(--cream); border-color: var(--cocoa); }
+.day.soon { border-style: dashed; }
+
+.booker {
+  background: var(--linen); border-radius: 18px; padding: var(--s2); box-shadow: var(--shadow);
+  display: flex;
+}
+.booker iframe { width: 100%; min-height: 680px; border: 0; border-radius: 12px; background: #fff; }
+.booker-fallback {
+  flex: 1; border-radius: 12px; border: 1px dashed var(--line);
+  display: grid; place-content: center; text-align: center; gap: var(--s4); padding: var(--s7) var(--s5);
+}
+.booker-fallback h3 { font-size: 36px; }
+.booker-fallback p { color: var(--taupe); max-width: 36ch; margin-inline: auto; }
+.booker-fallback .actions { display: flex; gap: var(--s3); justify-content: center; flex-wrap: wrap; margin-top: var(--s2); }
+.booker-alt { margin-top: var(--s4); font-size: 15px; color: var(--taupe); }
+@media (max-width: 860px) {
+  .book .wrap { grid-template-columns: 1fr; gap: var(--s7); }
+}
+.soon-note { display: block; margin-top: var(--s2); font-size: 14px; color: var(--taupe); }
+@media (max-width: 420px) {
+  .days { gap: 4px; flex-wrap: nowrap; }
+  .day { padding: 2px 7px; font-size: 13px; }
+  .facts li { grid-template-columns: 80px 1fr; gap: var(--s3); }
+}
+
+/* FAQ */
+.faq-list { max-width: 760px; border-top: 1px solid var(--line); }
+details { border-bottom: 1px solid var(--line); }
+summary {
+  list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: var(--s4);
+  padding: var(--s5) 0; font: 500 24px/1.25 var(--serif); min-height: 48px;
+}
+summary::-webkit-details-marker { display: none; }
+summary::after {
+  content: "+"; font: 400 26px/1 var(--sans); color: var(--clay); flex: none;
+  transition: transform .3s var(--ease);
+}
+details[open] summary::after { transform: rotate(45deg); }
+details p { padding: 0 0 var(--s5); color: var(--taupe); max-width: 60ch; }
+
+/* Visit / footer */
+/* footer is always dark, so it uses fixed on-dark colors that don't flip with the theme */
+.visit { --bg: #3B2E26; --on: #F6F1EA; --on-soft: #E8CFC3; --on-muted: rgba(246,241,234,.72);
+  background: var(--bg); color: var(--on); padding-bottom: var(--s7); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .visit { --bg: #120E0B; } }
+:root[data-theme="dark"] .visit { --bg: #120E0B; }
+.visit .wrap { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: var(--s7); }
+.visit h2 { font-size: clamp(38px, 5vw, 58px); }
+.visit .eyebrow { color: var(--on-soft); }
+.visit h3 { font: 500 12px/1 var(--sans); letter-spacing: .22em; text-transform: uppercase; color: var(--on-soft); margin-bottom: var(--s3); }
+.visit address { font-style: normal; }
+.visit a {
+  display: inline-block; padding-block: 10px; color: var(--on);
+  text-decoration: underline; text-decoration-color: rgba(246,241,234,.4); text-underline-offset: 4px;
+  transition: text-decoration-color .2s var(--ease);
+}
+.visit a:hover { text-decoration-color: var(--on); }
+.visit .stack { display: grid; gap: 0; }
+.visit .stack > span:not(:has(a)) { padding-block: 2px; }
+.visit .muted { color: var(--on-muted); }
+.visit :focus-visible { outline-color: var(--on-soft); }
+.foot { margin-top: var(--s7); padding-top: var(--s5); border-top: 1px solid rgba(246,241,234,.18);
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: var(--s3); font-size: 14px; }
+.visit .foot { grid-column: 1 / -1; }
+@media (max-width: 860px) { .visit .wrap { grid-template-columns: 1fr; gap: var(--s6); } }
+
+/* Mobile book bar */
+.bookbar {
+  position: fixed; inset: auto 0 0 0; z-index: 30; display: none;
+  padding: var(--s3) var(--gutter) calc(var(--s3) + env(safe-area-inset-bottom));
+  background: color-mix(in srgb, var(--cream) 92%, transparent);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid var(--line);
+  transform: translateY(110%); transition: transform .4s var(--ease);
+}
+.bookbar.show { transform: none; }
+.bookbar .btn { width: 100%; }
+@media (max-width: 760px) {
+  .bookbar { display: block; }
+  body { padding-bottom: 80px; }
+}
+
+/* reveal */
+.js .reveal { opacity: 0; transform: translateY(16px); transition: opacity .8s var(--ease), transform .8s var(--ease); transition-delay: var(--d, 0s); }
+.js .reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .reveal, .js .reveal.in { opacity: 1; transform: none; transition: none; }
+  * { transition-duration: .01ms !important; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Hair by Hannah, back to top">Hair by Hannah</a>
+    <nav class="nav" aria-label="Main">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#visit">Visit</a>
+      <a class="btn btn-solid" href="#book">Book now</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap">
+      <div>
+        <span class="tag reveal">New clients welcome</span>
+        <h1 id="hero-title" class="reveal" style="--d:.08s">Custom blondes &amp; <em>lived-in</em> color</h1>
+        <p class="lede reveal" style="--d:.16s">Hannah Richards, hairstylist at Salon Zinnia in San Clemente.</p>
+        <div class="actions reveal" style="--d:.24s">
+          <a class="btn btn-solid" href="#book">Book an appointment</a>
+          <a class="link" href="#work">See her work</a>
+        </div>
+      </div>
+      <div class="hero-art reveal" style="--d:.12s">
+        <div class="main"><img src="images/beachy-blonde.jpg" width="1050" height="1400" alt="Beachy blonde waves, styled by Hannah at Salon Zinnia" fetchpriority="high"></div>
+        <div class="small"><img src="images/layered-bronde.jpg" width="1050" height="1400" alt="Face-framing layers on bronde hair" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <!-- DRAFT BIO: Hannah should read this and make it hers (years behind the chair, training, a personal detail). -->
+  <section class="sec about" id="about" aria-labelledby="about-title">
+    <div class="wrap">
+      <div class="about-photo reveal"><img src="images/blonde-blowout.jpg" width="1050" height="1400" alt="Soft blonde blowout in the Salon Zinnia boutique" loading="lazy"></div>
+      <div>
+        <p class="eyebrow">Meet Hannah</p>
+        <h2 id="about-title">Hair that grows out as good as it looks on day one.</h2>
+        <div class="bio">
+          <p>Hi, I’m Hannah, an Orange County hairstylist behind the chair at Salon Zinnia in San Clemente.</p>
+          <p>Blonding is my favorite thing to do: bright, buttery, or a soft bronde, always placed so it grows out gently and you’re not stuck in the salon every six weeks. I love a good haircut too, from face-framing layers to a big chop into a bob.</p>
+          <p>Every appointment starts with a conversation about your hair, your routine and your budget, so we land on something that fits your real life. All are welcome in my chair, including men’s cuts and kids.</p>
+        </div>
+        <p class="sig">Hannah</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <!-- Prices intentionally left off until Hannah confirms them. -->
+  <section class="sec" id="services" aria-labelledby="services-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Services</p>
+        <h2 id="services-title">What we can do together</h2>
+      </div>
+      <div class="menu">
+        <div class="menu-group">
+          <h3>Color</h3>
+          <div class="item"><div class="item-name">Custom blonding</div><p>Highlights, balayage and brightening, tailored to your base and how often you want to come in.</p></div>
+          <div class="item"><div class="item-name">Lived-in color</div><p>Soft, dimensional color for blondes, brondes and brunettes that grows out without a harsh line.</p></div>
+          <div class="item"><div class="item-name">Gloss &amp; toner</div><p>Refresh the tone between appointments and bring back shine.</p></div>
+          <div class="item"><div class="item-name">Root touch-up</div><p>All-over color at the root to keep things fresh.</p></div>
+        </div>
+        <div class="menu-group">
+          <h3>Cut &amp; style</h3>
+          <div class="item"><div class="item-name">Haircut</div><p>Layers, face-framing, trims or a big change.</p></div>
+          <div class="item"><div class="item-name">Men’s cut</div><p>Clean, easy cuts that are simple to keep up.</p></div>
+          <div class="item"><div class="item-name">Kids’ cut</div><p>Patient, quick, and no fuss.</p></div>
+          <div class="item"><div class="item-name">Blowout</div><p>A smooth, bouncy style for events or just because.</p></div>
+        </div>
+      </div>
+      <div class="menu-note">
+        <p><strong>Not sure what to book?</strong> Pricing depends on your hair’s length, thickness and goals. Text Hannah a photo of your hair now and one you love, and she’ll tell you what to book.</p>
+        <a class="btn btn-ghost" href="sms:+19493066976">Text a photo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="sec gallery" id="work" aria-labelledby="work-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Recent work</p>
+        <h2 id="work-title">From the chair</h2>
+      </div>
+      <div class="grid">
+        <figure class="reveal"><img src="images/dimensional-blonde.jpg" width="1050" height="1400" alt="Dimensional blonde with lowlights" loading="lazy"></figure>
+        <figure class="reveal" style="--d:.05s"><img src="images/blonde-bob.jpg" width="789" height="1400" alt="Smiling client with a fresh blonde bob" loading="lazy"></figure>
+        <figure class="reveal" style="--d:.1s"><img src="images/lived-in-brunette.jpg" width="969" height="1292" alt="Lived-in brunette with soft caramel pieces" loading="lazy"></figure>
+        <figure class="reveal" style="--d:.15s"><img src="images/soft-blonde.jpg" width="1050" height="1400" alt="Smooth, soft blonde with a face-framing layer" loading="lazy"></figure>
+        <figure class="reveal" style="--d:.2s"><img src="images/face-framing-layers.jpg" width="640" height="1136" alt="Long layers on brunette hair, seen from behind" loading="lazy"></figure>
+        <figure class="reveal" style="--d:.25s"><img src="images/bright-blonde.jpg" width="1050" height="1400" alt="Long, bright blonde with soft waves" loading="lazy"></figure>
+      </div>
+      <div class="gallery-foot">
+        <p>More transformations on Instagram.</p>
+        <a class="link" href="https://www.instagram.com/hairbyhannahrichards/" target="_blank" rel="noopener">@hairbyhannahrichards</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section class="sec book" id="book" aria-labelledby="book-title">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Book</p>
+        <div class="sec-head" style="margin-bottom:0">
+          <h2 id="book-title">Find a time that works</h2>
+          <p id="book-copy">Text Hannah the service you want and a couple of days that work. She’ll confirm by text.</p>
+        </div>
+        <ul class="facts">
+          <li><span>Days</span>
+            <div class="days" aria-label="Tuesday, Thursday and Friday; Saturdays coming soon">
+              <b class="day">M</b><b class="day on">Tu</b><b class="day">W</b><b class="day on">Th</b><b class="day on">F</b><b class="day soon" title="Coming soon">Sa</b><b class="day">Su</b>
+            </div>
+            <span class="soon-note">Saturdays coming soon</span>
+          </li>
+          <li><span>Where</span><div>Salon Zinnia, 641 Camino de los Mares, San Clemente</div></li>
+          <li><span>Questions</span><div><a class="link" href="sms:+19493066976">Text (949) 306-6976</a></div></li>
+        </ul>
+      </div>
+      <div>
+        <div class="booker" id="booker">
+          <div class="booker-fallback" id="booker-fallback">
+            <h3>Text to book</h3>
+            <p>Online booking is coming soon. For now, send Hannah a text with the service you want and a couple of days that work.</p>
+            <div class="actions">
+              <a class="btn btn-solid" href="sms:+19493066976">Text Hannah</a>
+              <a class="btn btn-ghost" href="https://ig.me/m/hairbyhannahrichards" target="_blank" rel="noopener">DM on Instagram</a>
+            </div>
+          </div>
+        </div>
+        <p class="booker-alt" id="booker-alt" hidden>Calendar not loading? <a class="link" id="booker-link" href="#" target="_blank" rel="noopener">Open booking in a new tab</a> or text (949) 306-6976.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="sec" id="faq" aria-labelledby="faq-title" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Good to know</p>
+        <h2 id="faq-title">Before your visit</h2>
+      </div>
+      <div class="faq-list">
+        <details><summary>Are you taking new clients?</summary><p>Yes. New clients are always welcome.</p></details>
+        <details><summary>Do you do men’s and kids’ cuts?</summary><p>Yes, every service is open to everyone.</p></details>
+        <details><summary>I’m not sure which color service I need.</summary><p>Text a photo of your hair now and a photo of what you’d love. Hannah will tell you what to book and how much time to plan for.</p></details>
+        <details><summary>Where is the salon?</summary><p>Salon Zinnia, 641 Camino de los Mares in San Clemente. It’s a full salon with a lifestyle boutique, so feel free to browse while your color processes.</p></details>
+        <!-- TODO (Hannah): add a cancellation / late policy here once she decides on one. -->
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section class="sec visit" id="visit" aria-labelledby="visit-title">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow" style="margin-bottom:16px">Visit</p>
+        <h2 id="visit-title">See you in the chair.</h2>
+      </div>
+      <div>
+        <h3>Salon Zinnia</h3>
+        <address class="stack">
+          <span>641 Camino de los Mares</span>
+          <span>San Clemente, CA 92673</span>
+          <span><a href="https://www.google.com/maps/search/?api=1&query=Salon+Zinnia+641+Camino+de+los+Mares+San+Clemente+CA" target="_blank" rel="noopener">Get directions</a></span>
+        </address>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <div class="stack">
+          <span><a href="sms:+19493066976">Text (949) 306-6976</a></span>
+          <span><a href="tel:+19493066976">Call</a></span>
+          <span><a href="https://www.instagram.com/hairbyhannahrichards/" target="_blank" rel="noopener">Instagram</a></span>
+          <!-- TODO: add work email here once Hannah sets it up -->
+        </div>
+      </div>
+      <div class="foot">
+        <span class="muted">© <span id="yr">2026</span> Hair by Hannah Richards</span>
+        <span class="muted">Tuesday · Thursday · Friday</span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="bookbar" id="bookbar"><a class="btn btn-solid" href="#book">Book an appointment</a></div>
+
+<script>
+/* ──────────────────────────────────────────────────────────────
+   BOOKING SETUP (one line to change)
+   1. In Google Calendar: Create → Appointment schedule.
+   2. Open the schedule → Share → "Website embed" → Inline.
+   3. Copy the URL inside src="..." and paste it below.
+   Leave it empty to show the "Text to book" card instead.
+   ────────────────────────────────────────────────────────────── */
+const BOOKING_URL = "";
+
+(function () {
+  if (!BOOKING_URL) return;
+  const box = document.getElementById("booker");
+  const frame = document.createElement("iframe");
+  frame.src = BOOKING_URL;
+  frame.title = "Book an appointment with Hannah";
+  frame.loading = "lazy";
+  box.replaceChildren(frame);
+  document.getElementById("book-copy").textContent =
+    "Pick a service and time and it goes straight onto Hannah’s calendar. You’ll get a confirmation by email.";
+  const alt = document.getElementById("booker-alt");
+  document.getElementById("booker-link").href = BOOKING_URL.replace(/\?gv=true$/, "");
+  alt.hidden = false;
+})();
+
+document.getElementById("yr").textContent = new Date().getFullYear();
+
+/* header border + mobile book bar */
+const top_ = document.getElementById("top");
+const bar = document.getElementById("bookbar");
+const bookSec = document.getElementById("book");
+let bookVisible = false;
+new IntersectionObserver(([e]) => { bookVisible = e.isIntersecting; onScroll(); }, { threshold: 0.15 }).observe(bookSec);
+function onScroll() {
+  const y = window.scrollY;
+  top_.classList.toggle("scrolled", y > 8);
+  const showBar = y > 500 && !bookVisible;
+  bar.classList.toggle("show", showBar);
+  document.body.classList.toggle("bar-on", showBar);
+}
+addEventListener("scroll", onScroll, { passive: true });
+onScroll();
+
+/* gentle reveal */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+}, { rootMargin: "0px 0px -8% 0px" });
+document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+</script>
+</body>
+</html>
